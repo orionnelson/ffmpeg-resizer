@@ -49,7 +49,7 @@ def doCrop(sizex,sizey,ratio,ksize):
         print(outfile)
 
         img =  ffmpeg.output(img, outfile)
-        #ffmpeg.run(img)
+        ffmpeg.run(img)
 
 
 
