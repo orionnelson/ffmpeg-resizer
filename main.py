@@ -8,6 +8,7 @@ import mimetypes
 from kivy.core.window import Window
 import os
 import ffmpeg
+import cv2
 
 mimetypes.init()
 def get_extensions_for_type(general_type):
@@ -46,7 +47,7 @@ def doCrop(sizex,sizey,ratio,ksize):
             img = ffmpeg.filter(img,"scale",sizex,sizey)
         if ksize:
             #img = ffmpeg.filter(img,"pad",sizex,sizey,"(ow-iw)/2","(oh-ih)/2")
-            img = ffmpeg.filter(img,"crop",sizex,sizey,"(ow-iw)/2","(oh-ih)/2")
+            img = ffmpeg.filter_(img,"crop",sizex,sizey)
 
         
         #img = ffmpeg.filter(img,"pad",str(sizex)+":"+str(sizey)+":(ow-iw)/2:(oh-ih)/2)")
@@ -98,8 +99,10 @@ class ResizeWindow(Screen):
     def loginBtn(self):
         try:
             doCrop(int(self.sizex.text),int(self.sizey.text),self.ratio.active,self.ksize.active)
+            validCrop()
         except Exception as e:
             print(e)
+            invalidCrop()
         print(items)
 
         '''
@@ -110,6 +113,11 @@ class ResizeWindow(Screen):
         else:
             invalidLogin()
         '''
+    def openOutPutButton():
+        import subprocess
+        p_folder = os.path.join(os.path.dirname(__file__) , "Resizer-Results")
+        subprocess.Popen(r'explorer /select, "{}"',p_folder)
+        os.system("")
 
     def createBtn(self):
         self.reset()
@@ -119,6 +127,9 @@ class ResizeWindow(Screen):
         self.email.text = ""
         self.password.text = ""
 
+def updateitems():
+    if sm.current=="main":
+        sm.current_screen.updateItems()
 
 class MainWindow(Screen):
     n = ObjectProperty(None)
@@ -126,25 +137,32 @@ class MainWindow(Screen):
     selected =  ObjectProperty(None)
     current = ""
 
+
     def resize_settings(self):
         sm.current = "resize"
+
+    def updateItems(self):
+        if len(items) > 0:
+            self.selected.text = ("Selected "+str(len(items))+" Images")
+        else:
+            self.selected.text = " Fuh yo bic"
 
 
 class WindowManager(ScreenManager):
     pass
 
 
-def invalidLogin():
-    pop = Popup(title='Invalid Login',
-                  content=Label(text='Invalid username or password.'),
+def invalidCrop():
+    pop = Popup(title='Invalid Crop',
+                  content=Label(text='The Settings Specified are Invalid.'),
                   size_hint=(None, None), size=(400, 400))
     pop.open()
 
 
-def invalidForm():
-    pop = Popup(title='Invalid Form',
-                  content=Label(text='Please fill in all inputs with valid information.'),
-                  size_hint=(None, None), size=(400, 400))
+def validCrop():
+    pop = Popup(title='Successfully Cropped ',
+                  content=Label(text='Please View the Respective Folder \n In the Output Location'),
+                  size_hint=(None, None), size=(300, 300))
 
     pop.open()
 
@@ -183,6 +201,7 @@ class MyMainApp(App):
                 files.extend(self.recursive(file_path))
             items = [file for file in files if file.lower().endswith(images_formats)]
             print(items)
+            updateitems()
             return
 
 
