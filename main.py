@@ -8,7 +8,6 @@ import mimetypes
 from kivy.core.window import Window
 import os
 import ffmpeg
-import cv2
 
 mimetypes.init()
 def get_extensions_for_type(general_type):
@@ -19,6 +18,9 @@ def get_extensions_for_type(general_type):
 
 global image_formats
 images_formats = tuple(get_extensions_for_type('image'))
+imf = list(images_formats)
+imf.remove(".svg")
+images_formats = tuple(imf)
 
 import ffmpeg
 def doCrop(sizex,sizey,ratio,ksize):
