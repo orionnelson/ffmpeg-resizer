@@ -4,7 +4,6 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.properties import ObjectProperty
 from kivy.uix.popup import Popup
 from kivy.uix.label import Label
-from database import DataBase
 import mimetypes
 from kivy.core.window import Window
 import os
@@ -40,15 +39,22 @@ def doCrop(sizex,sizey,ratio,ksize):
             print("made")
         img = ffmpeg.input(i)
         #scalemsg = str(sizex)+":"+str(sizey)+":force_original_aspect_ratio=decrease"
-        img = ffmpeg.filter(img,"scale",sizex,sizey,force_original_aspect_ratio="decrease")
         #img = ffmpeg.filter(img,"force_original_aspect_ratio","decrease")
-        #if ratio:
-            #img = ffmpeg.filter(img,"scale",str(sizex)+":"+str(sizey)+":force_original_aspect_ratio=decrease")
+        if ratio:
+            img = ffmpeg.filter(img,"scale",sizex,sizey,force_original_aspect_ratio="increase")
+        else:
+            img = ffmpeg.filter(img,"scale",sizex,sizey)
+        if ksize:
+            #img = ffmpeg.filter(img,"pad",sizex,sizey,"(ow-iw)/2","(oh-ih)/2")
+            img = ffmpeg.filter(img,"crop",sizex,sizey,"(ow-iw)/2","(oh-ih)/2")
+
+        
         #img = ffmpeg.filter(img,"pad",str(sizex)+":"+str(sizey)+":(ow-iw)/2:(oh-ih)/2)")
         outfile = os.path.join(sdir,os.path.basename(i))
         print(outfile)
 
         img =  ffmpeg.output(img, outfile)
+        img = img.global_args('-y')
         ffmpeg.run(img)
 
 
@@ -146,7 +152,6 @@ def invalidForm():
 kv = Builder.load_file("test.kv")
 
 sm = WindowManager()
-db = DataBase("users.txt")
 
 screens = [ResizeWindow(name="resize"), MainWindow(name="main")]
 for screen in screens:
