@@ -43,7 +43,7 @@ Just Resizes Images to be a Certain Size
     <a href="https://github.com/orionnelson/ffmpeg-resizer"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/orionnelson/ffmpeg-resizer">View Demo</a>
+    <a href="https://youtu.be/a2mhB3tGfLU">View Demo</a>
     ·
     <a href="https://github.com/orionnelson/ffmpeg-resizer/issues">Report Bug</a>
     ·
