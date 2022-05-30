@@ -30,16 +30,11 @@ def doCrop(sizex,sizey,ratio,ksize):
     for i in items:
         cdir = os.path.dirname(os.path.relpath(i))
         sdir = ["Resizer-Results"] + cdir.split(os.path.sep)
-        print(sdir)
         sdir.remove("..")
         sdir = list(filter(None, sdir))
         sdir = os.path.sep.join(sdir)
-        print(sdir)
         if not os.path.exists(sdir):
-            print("hello")
-            print(sdir)
             os.makedirs(sdir,exist_ok = True)
-            print("made")
         img = ffmpeg.input(i)
         #scalemsg = str(sizex)+":"+str(sizey)+":force_original_aspect_ratio=decrease"
         #img = ffmpeg.filter(img,"force_original_aspect_ratio","decrease")
@@ -54,7 +49,7 @@ def doCrop(sizex,sizey,ratio,ksize):
         
         #img = ffmpeg.filter(img,"pad",str(sizex)+":"+str(sizey)+":(ow-iw)/2:(oh-ih)/2)")
         outfile = os.path.join(sdir,os.path.basename(i))
-        print(outfile)
+        #print(outfile)
 
         img =  ffmpeg.output(img, outfile)
         img = img.global_args('-y')
