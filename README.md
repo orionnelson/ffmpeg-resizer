@@ -85,7 +85,7 @@ Just Resizes Images to be a Certain Size
 ## About The Project
 <div align="center">
   <a href="https://github.com/orionnelson/ffmpeg-resizer">
-    <img src="https://raw.githubusercontent.com/orionnelson/ffmpeg-resizer/main/Resize-Example.jpg" alt="Example" width="1600" height="750">
+    <img src="https://raw.githubusercontent.com/orionnelson/ffmpeg-resizer/main/Resize-Example.jpg" alt="Example" width="1600" height="450">
   </a>
   </div>
 
