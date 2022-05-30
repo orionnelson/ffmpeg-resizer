@@ -95,8 +95,6 @@ Here's why you should use FFMPEG-RESIZER:
 
 Choose FFMPEG-RESIZER for all your image cropping need if any of the above apply to you!
 
-Use the `BLANK_README.md` to get started.
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
