@@ -83,8 +83,11 @@ Just Resizes Images to be a Certain Size
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://raw.githubusercontent.com/orionnelson/ffmpeg-resizer/main/Resize-Example.jpg)
+<div align="center">
+  <a href="https://github.com/orionnelson/ffmpeg-resizer">
+    <img src="https://raw.githubusercontent.com/orionnelson/ffmpeg-resizer/main/Resize-Example.jpg" alt="Example" width="1600" height="750">
+  </a>
+  </div>
 
 FFMPEG-RESIZER is an all in one library for batch cropping images. Just select a folder and ffmpeg-resizer will automaticily find images and produce an identical path with the cropped images.
 
