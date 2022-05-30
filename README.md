@@ -32,7 +32,7 @@ Just Resizes Images to be a Certain Size
 <br />
 <div align="center">
   <a href="https://github.com/orionnelson/ffmpeg-resizer">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/FFmpeg_Logo_new.svg/1280px-FFmpeg_Logo_new.svg.png" alt="Logo" width="80" height="80">
+    <img src="https://www.linuxadictos.com/wp-content/uploads/FFmpeg-1.jpg.webp" alt="Logo" width="500" height="100">
   </a>
 
   <h3 align="center">FFMPEG-RESIZER</h3>
