@@ -35,10 +35,10 @@ Just Resizes Images to be a Certain Size
     <img src="https://www.unixmen.com/wp-content/uploads/2014/04/ffmpeg-logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">FFMPEG-RESIZER</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    Crop Your Images With Little Hassle!
     <br />
     <a href="https://github.com/orionnelson/ffmpeg-resizer"><strong>Explore the docs »</strong></a>
     <br />
